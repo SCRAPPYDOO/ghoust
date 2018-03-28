@@ -13,14 +13,14 @@ enum Action {
 class ActionManager
 {
 	public:
-		ActionManager(HWND wowWindowHandler);
+		static ActionManager* getInstance();
 		~ActionManager();
 
 	private:
-		HWND wowWindowHandler;
+		ActionManager();
+		static ActionManager* actionManager;
 
 	public:
 		void startAction(Action action);
 		void stopAction(Action action);
 };
-

@@ -65,11 +65,11 @@ class MemoryReader
 {
 	public:
 		static MemoryReader* getInstance();
-
+		~MemoryReader();
 		virtual ~MemoryReader() {
 			this->stop();
 		}
-		
+
 	private:
 		MemoryReader();
 
@@ -84,15 +84,13 @@ class MemoryReader
 
 	private:
 		HANDLE processHandler;
-		const DWORD processId = 936;
 
 	public:
 		void readMemory();
 		int readInt(Address address);
-		
+
 		float readFloat(Address address);
 
 		int readInt(LPVOID address);
 		int readInt(int address);
 };
-

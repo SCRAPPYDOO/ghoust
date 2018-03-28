@@ -12,10 +12,10 @@ class ObjectManager {
 
 	private:
 		ObjectManager();
-		
+
 	private:
 		static ObjectManager* objectManager;
-		MemoryReader * memoryReader;
+		MemoryReader* memoryReader;
 		std::map<int, PlayerObject*> playerList;
 		int baseAddress;
 		PlayerObject* player;
@@ -26,5 +26,6 @@ class ObjectManager {
 
 	public:
 		void addPlayerObject(PlayerObject* playerObject);
+		PlayerObject* getPlayer();
+		PlayerObject* getTarget(int guid);
 };
-

@@ -17,15 +17,20 @@ MemoryReader* MemoryReader::memoryReader = NULL;
 MemoryReader* MemoryReader::getInstance() {
 	if (memoryReader == NULL) {
 		memoryReader = new MemoryReader();
-		memoryReader->initialize();
 	}
 
 	return memoryReader;
 }
 
 MemoryReader::MemoryReader() {
-	cout << "Initializing MemoryReader" << endl;
+	cout << "MemoryReader: Initializing" << endl;
+	initialize();
 }
+
+MemoryReader::~MemoryReader()
+{
+}
+
 
 void MemoryReader::initialize()
 {
@@ -66,15 +71,15 @@ void MemoryReader::lookupPrivilege() {
 
 void MemoryReader::openProcess()
 {
-	DWORD processId = this->processId;
+	DWORD processId = WindowManager::getInstance()->getProcessId();
 
 	this->processHandler = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processId);
 
 	if (this->processHandler != NULL) {
-		cout << "Process opened " << this->processHandler << endl;
+		cout << "MemoryReader: Process opened " << &this->processHandler << endl;
 	}
 	else {
-		cout << "Cant open process: " << processId << " last error " << GetLastError() << endl;
+		cout << "MemoryReader :Cant open process: " << processId << " last error " << GetLastError() << endl;
 		getchar();
 	}
 }
@@ -89,7 +94,7 @@ void MemoryReader::calculateWowBaseAddress()
 
 		if (EnumProcessModulesEx(processHandler, hMod, sizeof(hMod), &cbNeeded, LIST_MODULES_32BIT | LIST_MODULES_64BIT))
 		{
-			
+
 			for (int i = 0; i < (cbNeeded / sizeof(HMODULE)); i++) {
 				TCHAR szModName1[MAX_PATH];
 				if (GetModuleFileNameEx(processHandler, hMod[i], szModName1, sizeof(szModName1) / sizeof(TCHAR)))

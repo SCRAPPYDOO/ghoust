@@ -1,9 +1,19 @@
 #include "stdafx.h"
 #include "ActionManager.h"
 
-ActionManager::ActionManager(HWND wowWindowHandler)
+ActionManager* ActionManager::actionManager = NULL;
+
+ActionManager* ActionManager::getInstance() {
+	if(this->actionManager == NULL) {
+		actionManager = new ActionManager();
+	}
+
+	return this->actionManager;
+}
+
+ActionManager::ActionManager()
 {
-	this->wowWindowHandler = wowWindowHandler;
+
 }
 
 
@@ -13,10 +23,10 @@ ActionManager::~ActionManager()
 
 void ActionManager::startAction(Action action)
 {
-	PostMessage(wowWindowHandler, WM_KEYDOWN, action, 0);
+	WindowManager::getInstance()->postMessage(action, WM_DOWN);
 }
 
 void ActionManager::stopAction(Action action)
 {
-	PostMessage(wowWindowHandler, WM_KEYUP, action, 0);
+	WindowManager::getInstance()->postMessage(action, WM_KEYUP);
 }

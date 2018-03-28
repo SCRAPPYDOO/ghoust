@@ -2,9 +2,18 @@
 #include "WindowManager.h"
 
 #include <iostream>
-#include <Windows.h>
 
 using namespace std;
+
+WindowManager* WindowManager::windowManager = NULL;
+
+WindowManager* WindowManager::getInstance() {
+	if(windowManager == NULL) {
+		windowManager = new WindowManager();
+	}
+
+	return windowManager;
+}
 
 WindowManager::WindowManager()
 {
@@ -19,13 +28,17 @@ WindowManager::WindowManager()
 	}
 
 	if (this->getProcessId() == NULL) {
-		cout << "Cant find process" << endl;
+		cout << "WindowManager: Cant find process" << endl;
 	}
 	else {
-		cout << "Process id: " << this->getProcessId() << endl;
+		cout << "WindowManager: Process id: " << this->getProcessId() << endl;
 	}
 }
 
 WindowManager::~WindowManager()
 {
+}
+
+void WindowManager::postMessage(Action action, int keyStatus) {
+	PostMessage(wowWindowHandler, keyStatus, action, 0);
 }
