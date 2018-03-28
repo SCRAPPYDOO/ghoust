@@ -1,16 +1,2 @@
-﻿  MemoryReader.cpp
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(89): warning C4311: 'type cast': pointer truncation from 'HMODULE' to 'DWORD'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(89): warning C4302: 'type cast': truncation from 'HMODULE' to 'DWORD'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(75): warning C4101: 'info': unreferenced local variable
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(137): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'unsigned int'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(137): warning C4302: 'type cast': truncation from 'BYTE *' to 'unsigned int'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(165): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(169): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(172): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(176): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(177): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(180): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(194): warning C4715: 'MemoryReader::readInt': not all control paths return a value
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(201): warning C4715: 'MemoryReader::readInt': not all control paths return a value
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(208): warning C4715: 'MemoryReader::readFloat': not all control paths return a value
+﻿  ObjectManager.cpp
   ghoust.vcxproj -> C:\Users\SCRAPPYDOO\source\repos\ghoust\x64\Debug\ghoust.exe

@@ -3,7 +3,7 @@
 #include <tchar.h>
 #include <stdio.h>
 #include <psapi.h>
-#include <TlHelp32.h> //PROCESSENTRY
+#include <TlHelp32.h>
 #include <iomanip>
 
 #pragma comment(lib, "psapi.lib")
@@ -12,17 +12,30 @@ using namespace std;
 
 #define UNINITIALIZED 0xFFFFFFFF
 
-MemoryReader::MemoryReader(DWORD processId) {
-	this->lookupPrivilege();
-	this->openProcess(processId);
-	this->processId = processId;
-	//this->calculateWowBaseAddress();
-	//this->calculateWowBaseAddress2();
+MemoryReader* MemoryReader::memoryReader = NULL;
+
+MemoryReader* MemoryReader::getInstance() {
+	if (memoryReader == NULL) {
+		memoryReader = new MemoryReader();
+		memoryReader->initialize();
+	}
+
+	return memoryReader;
 }
 
-MemoryReader::~MemoryReader()
+MemoryReader::MemoryReader() {
+	cout << "Initializing MemoryReader" << endl;
+}
+
+void MemoryReader::initialize()
 {
-	CloseHandle(processHandler);
+	this->lookupPrivilege();
+	this->openProcess();
+	//this->readMemory();
+}
+
+void MemoryReader::stop() {
+	CloseHandle(this->processHandler);
 }
 
 void MemoryReader::lookupPrivilege() {
@@ -51,12 +64,14 @@ void MemoryReader::lookupPrivilege() {
 	}
 }
 
-void MemoryReader::openProcess(DWORD processId)
+void MemoryReader::openProcess()
 {
+	DWORD processId = this->processId;
+
 	this->processHandler = OpenProcess(PROCESS_ALL_ACCESS, FALSE, processId);
 
-	if (processHandler != NULL) {
-		cout << "Process opened " << processHandler << endl;
+	if (this->processHandler != NULL) {
+		cout << "Process opened " << this->processHandler << endl;
 	}
 	else {
 		cout << "Cant open process: " << processId << " last error " << GetLastError() << endl;
@@ -66,8 +81,6 @@ void MemoryReader::openProcess(DWORD processId)
 
 void MemoryReader::calculateWowBaseAddress()
 {
-
-
 	if (NULL != processHandler)
 	{
 		HMODULE hMod[1024];
@@ -191,6 +204,7 @@ int MemoryReader::readInt(LPVOID address) {
 	if (ReadProcessMemory(this->processHandler, address, &value, sizeof(value), NULL)) {
 		return value;
 	}
+	return 0;
 }
 
 int MemoryReader::readInt(Address address) {
@@ -198,6 +212,7 @@ int MemoryReader::readInt(Address address) {
 	if (ReadProcessMemory(this->processHandler, (LPVOID)address, &value, sizeof(value), NULL)) {
 		return value;
 	}
+	return 0;
 }
 
 float MemoryReader::readFloat(Address address) {
@@ -205,13 +220,10 @@ float MemoryReader::readFloat(Address address) {
 	if (ReadProcessMemory(this->processHandler, (LPVOID)address, &value, sizeof(value), NULL)) {
 		return value;
 	}
+	return 0;
 }
 
-int MemoryReader::getPlayerLevel()
+int MemoryReader::readInt(int address)
 {
-	return readInt(Address::PLAYER_LEVEL);
-}
-
-float MemoryReader::getPlayerPositionX() {
-	return readFloat(Address::PLAYER_POSITION_X);
+	return this->readInt((LPVOID)address);
 }

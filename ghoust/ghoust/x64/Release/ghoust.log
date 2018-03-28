@@ -1,11 +1,19 @@
 ﻿  MemoryReader.cpp
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(89): warning C4311: 'type cast': pointer truncation from 'HMODULE' to 'DWORD'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(89): warning C4302: 'type cast': truncation from 'HMODULE' to 'DWORD'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(75): warning C4101: 'info': unreferenced local variable
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(137): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'unsigned int'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(137): warning C4302: 'type cast': truncation from 'BYTE *' to 'unsigned int'
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(168): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(171): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
-c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(189): error C2084: function 'int MemoryReader::readInt(LPVOID)' already has a body
-  c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(175): note: see previous definition of 'readInt'
-  ghoust.cpp
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(98): warning C4311: 'type cast': pointer truncation from 'HMODULE' to 'DWORD'
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(98): warning C4302: 'type cast': truncation from 'HMODULE' to 'DWORD'
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(84): warning C4101: 'info': unreferenced local variable
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(146): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'unsigned int'
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(146): warning C4302: 'type cast': truncation from 'BYTE *' to 'unsigned int'
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(174): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(178): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(181): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(185): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(186): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(189): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+c:\users\scrappydoo\source\repos\ghoust\ghoust\memoryreader.cpp(224): warning C4312: 'type cast': conversion from 'int' to 'LPVOID' of greater size
+  Generating code
+  83 of 98 functions (84.7%) were compiled, the rest were copied from previous compilation.
+    79 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  ghoust.vcxproj -> C:\Users\SCRAPPYDOO\source\repos\ghoust\x64\Release\ghoust.exe

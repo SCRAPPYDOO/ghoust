@@ -4,7 +4,9 @@
 #include <Windows.h>
 
 enum CHARACTERS_GUID {
-	GHOUST_HUNTER_GUID = 1149344
+	GHOUSTHUNTER_GUID = 1149344,
+	ABIGAIL_GUID = 1143598,
+	SHINAIRI_GUID = 1143511
 };
 
 enum STATIC_POINTER {
@@ -61,36 +63,36 @@ enum Address {
 
 class MemoryReader
 {
-	DWORD PlayerBaseStatic = 0x924720;
-	DWORD Offset1 = 0x38;
-	DWORD Offset2 = 0x24;
-
 	public:
-		MemoryReader(DWORD processId);
-		virtual ~MemoryReader();
+		static MemoryReader* getInstance();
+
+		virtual ~MemoryReader() {
+			this->stop();
+		}
+		
+	private:
+		MemoryReader();
+
+		static MemoryReader* memoryReader;
+
+		void initialize();
+		void stop();
+		void lookupPrivilege();
+		void openProcess();
+		void calculateWowBaseAddress();
+		void calculateWowBaseAddress2();
 
 	private:
 		HANDLE processHandler;
-		DWORD processId;
-		DWORD wowBaseAddress = 0;
-
-	private: 
-		void lookupPrivilege();
-		void openProcess(DWORD processId);
-		void calculateWowBaseAddress();
-		void calculateWowBaseAddress2();
+		const DWORD processId = 936;
 
 	public:
 		void readMemory();
 		int readInt(Address address);
-		int readInt(LPVOID address);
+		
 		float readFloat(Address address);
 
-	/*
-		etplayer info methods
-	*/
-	public:
-		int getPlayerLevel();
-		float getPlayerPositionX();
+		int readInt(LPVOID address);
+		int readInt(int address);
 };
 
