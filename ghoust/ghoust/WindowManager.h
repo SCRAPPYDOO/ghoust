@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Windows.h>
+#include "ActionType.h"
 
 class WindowManager
 {
@@ -18,5 +19,5 @@ class WindowManager
 		DWORD getProcessId() { return processId; };
 		HWND getWindowHandler() { return wowWindowHandler; };
 
-		postMessage(Action action, int keyStatus);
+		void postMessage(ActionType action, int keyStatus);
 };

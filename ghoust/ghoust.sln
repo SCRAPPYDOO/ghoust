@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ghoust", "ghoust\ghoust.vcxproj", "{82C15976-1B15-412A-AE0C-921AF4F4E92C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EC25B486-2B06-4738-A2BF-4E6615E70944}"
+	ProjectSection(SolutionItems) = preProject
+		ghoust\LogicManager.cpp = ghoust\LogicManager.cpp
+		ghoust\LogicManager.h = ghoust\LogicManager.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

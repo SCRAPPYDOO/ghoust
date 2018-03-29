@@ -49,12 +49,7 @@ void ObjectManager::setWowObjects() {
 		}
 	}
 
-	cout << "ObjectManager: Scanned Player GUID: " << this->player->getGuid() << endl;
-}
-
-void ObjectManager::addPlayerObject(PlayerObject* playerObject)
-{
-	this->playerList[playerObject->getGuid()] = playerObject;
+	//cout << "ObjectManager: Scanned Player GUID: " << this->player->getGuid() << endl;
 }
 
 void ObjectManager::createWowObject(int objectBaseAddress) {
@@ -70,7 +65,7 @@ void ObjectManager::createWowObject(int objectBaseAddress) {
 			break;
 	}
 
-	cout << "ObjectManager::createWowObject type: " << type << " guid: " << guid << endl;
+	//cout << "ObjectManager::createWowObject type: " << type << " guid: " << guid << endl;
 }
 
 

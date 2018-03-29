@@ -1,0 +1,6 @@
+*.idb
+*.tlog
+*.ipch
+*.db
+*.opendb
+*.lastbuildstate

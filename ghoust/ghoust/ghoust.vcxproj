@@ -148,6 +148,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ActionManager.h" />
+    <ClInclude Include="ActionType.h" />
+    <ClInclude Include="CreatureObject.h" />
+    <ClInclude Include="Guid.h" />
+    <ClInclude Include="LogicManager.h" />
+    <ClInclude Include="MemoryAddress.h" />
     <ClInclude Include="WowObject.h" />
     <ClInclude Include="MemoryReader.h" />
     <ClInclude Include="ObjectManager.h" />
@@ -160,10 +165,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActionManager.cpp" />
-    <ClCompile Include="ghoust.cpp" />
+    <ClCompile Include="Ghoust.cpp" />
+    <ClCompile Include="LogicManager.cpp" />
     <ClCompile Include="MemoryReader.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
-    <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

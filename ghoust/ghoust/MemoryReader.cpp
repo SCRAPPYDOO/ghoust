@@ -29,6 +29,7 @@ MemoryReader::MemoryReader() {
 
 MemoryReader::~MemoryReader()
 {
+	this->stop();
 }
 
 
@@ -118,10 +119,10 @@ void MemoryReader::calculateWowBaseAddress2() {
 	HANDLE moduleSnapshotHandle_ = INVALID_HANDLE_VALUE;
 	MODULEENTRY32 moduleEntry_;
 
-	DWORD  processBaseAddress_ = UNINITIALIZED;
+	DWORD processBaseAddress_ = UNINITIALIZED;
 	const wchar_t* txt = L"Hello World";
 	/* Take snapshot of all the modules in the process */
-	moduleSnapshotHandle_ = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, this->processId);
+	moduleSnapshotHandle_ = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, WindowManager::getInstance()->getProcessId());
 
 	/* Snapshot failed */
 	if (moduleSnapshotHandle_ == INVALID_HANDLE_VALUE)
@@ -206,29 +207,37 @@ void MemoryReader::readMemory() {
 
 int MemoryReader::readInt(LPVOID address) {
 	int value;
+	
 	if (ReadProcessMemory(this->processHandler, address, &value, sizeof(value), NULL)) {
+		//cout << "Read Int from address " << address << " value: " << value << endl;
 		return value;
 	}
 	return 0;
+}
+
+float MemoryReader::readFloat(LPVOID address) {
+	float value;
+	if (ReadProcessMemory(this->processHandler, address, &value, sizeof(value), NULL)) {
+		//cout << "Read Float from address " << address << " value: " << value << endl;
+		return value;
+	}
+	return 0;
+}
+
+int MemoryReader::readInt(int address) {
+	return this->readInt((LPVOID)address);
 }
 
 int MemoryReader::readInt(Address address) {
-	int value;
-	if (ReadProcessMemory(this->processHandler, (LPVOID)address, &value, sizeof(value), NULL)) {
-		return value;
-	}
-	return 0;
+	return this->readInt((LPVOID)address);
 }
 
 float MemoryReader::readFloat(Address address) {
-	float value;
-	if (ReadProcessMemory(this->processHandler, (LPVOID)address, &value, sizeof(value), NULL)) {
-		return value;
-	}
-	return 0;
+	return this->readFloat((LPVOID)address);
 }
 
-int MemoryReader::readInt(int address)
-{
-	return this->readInt((LPVOID)address);
+float MemoryReader::readFloat(int address) {
+	return this->readFloat((LPVOID)address);
 }
+
+

@@ -25,7 +25,7 @@ class ObjectManager {
 		void createWowObject(int objectBaseAddress);
 
 	public:
-		void addPlayerObject(PlayerObject* playerObject);
-		PlayerObject* getPlayer();
-		PlayerObject* getTarget(int guid);
+		void addPlayerObject(PlayerObject* playerObject) { this->playerList[playerObject->getGuid()] = playerObject; }
+		PlayerObject* getPlayer() { return player;  }
+		PlayerObject* getPlayer(int guid) { return playerList[guid]; }
 };

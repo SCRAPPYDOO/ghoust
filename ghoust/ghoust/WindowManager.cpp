@@ -39,6 +39,6 @@ WindowManager::~WindowManager()
 {
 }
 
-void WindowManager::postMessage(Action action, int keyStatus) {
+void WindowManager::postMessage(ActionType action, int keyStatus) {
 	PostMessage(wowWindowHandler, keyStatus, action, 0);
 }

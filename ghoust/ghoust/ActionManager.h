@@ -2,13 +2,8 @@
 
 #include <Windows.h>
 
-// https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
-enum Action {
-	MOVE_FORWARD = 0x57,
-	MOVE_LEFT = 0x41,
-	MOVE_RIGHT = 0x44,
-	MOVE_BACK = 0x53
-};
+#include "ActionType.h"
+#include "WindowManager.h"
 
 class ActionManager
 {
@@ -21,6 +16,6 @@ class ActionManager
 		static ActionManager* actionManager;
 
 	public:
-		void startAction(Action action);
-		void stopAction(Action action);
+		void startAction(ActionType action);
+		void stopAction(ActionType action);
 };

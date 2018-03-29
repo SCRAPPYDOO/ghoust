@@ -19,21 +19,24 @@
     <Filter Include="Header Files\Object\ObjectType">
       <UniqueIdentifier>{4490be12-6ca1-4a1d-bf29-e9a52a697296}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ActionType">
+      <UniqueIdentifier>{fb59751b-ff93-4627-94fb-d22edc60264c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MemoryAddress">
+      <UniqueIdentifier>{83cbc89d-7c12-400f-8857-52c9c952e09d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Guid">
+      <UniqueIdentifier>{6ce76601-76c6-4006-8653-102c8a40ad04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Resources">
+      <UniqueIdentifier>{2ff27d46-0f0b-4b53-9257-2560aa68cf95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MemoryReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ActionManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WindowManager.h">
@@ -51,12 +54,33 @@
     <ClInclude Include="WowObject.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
+    <ClInclude Include="LogicManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionType.h">
+      <Filter>Header Files\ActionType</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryAddress.h">
+      <Filter>Header Files\MemoryAddress</Filter>
+    </ClInclude>
+    <ClInclude Include="Guid.h">
+      <Filter>Header Files\Object\Guid</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatureObject.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ghoust.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MemoryReader.cpp">
@@ -68,11 +92,14 @@
     <ClCompile Include="WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectManager.cpp">
+    <ClCompile Include="LogicManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerObject.cpp">
+    <ClCompile Include="Ghoust.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Header Files\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

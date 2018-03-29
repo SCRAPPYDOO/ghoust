@@ -1,11 +1,14 @@
 #pragma once
 
-#include "WowObject.h"
+#include "CreatureObject.h"
 
-class PlayerObject : public WowObject
+class PlayerObject : public Creatureobject
 {
 	public:
-		PlayerObject(unsigned int baseAddress);
-		~PlayerObject();
+		PlayerObject(unsigned int baseAddress) : Creatureobject(baseAddress) {}
+		~PlayerObject() {}
+
+	public:
+	
 };
 
