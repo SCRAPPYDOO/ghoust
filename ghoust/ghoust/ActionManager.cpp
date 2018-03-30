@@ -21,12 +21,12 @@ ActionManager::~ActionManager()
 {
 }
 
-void ActionManager::startAction(ActionType action)
+void ActionManager::startAction(int action)
 {
 	WindowManager::getInstance()->postMessage(action, WM_KEYDOWN);
 }
 
-void ActionManager::stopAction(ActionType action)
+void ActionManager::stopAction(int action)
 {
 	WindowManager::getInstance()->postMessage(action, WM_KEYUP);
 }

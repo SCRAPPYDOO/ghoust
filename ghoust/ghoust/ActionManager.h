@@ -16,6 +16,6 @@ class ActionManager
 		static ActionManager* actionManager;
 
 	public:
-		void startAction(ActionType action);
-		void stopAction(ActionType action);
+		void startAction(int action);
+		void stopAction(int action);
 };

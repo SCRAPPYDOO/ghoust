@@ -19,5 +19,5 @@ class WindowManager
 		DWORD getProcessId() { return processId; };
 		HWND getWindowHandler() { return wowWindowHandler; };
 
-		void postMessage(ActionType action, int keyStatus);
+		void postMessage(int action, int keyStatus);
 };

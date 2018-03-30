@@ -48,14 +48,10 @@ void ObjectManager::setWowObjects() {
 			wowObject = nextWowObject;
 		}
 	}
-
-	//cout << "ObjectManager: Scanned Player GUID: " << this->player->getGuid() << endl;
 }
 
 void ObjectManager::createWowObject(int objectBaseAddress) {
 	int type = this->memoryReader->readInt(objectBaseAddress + Address::OBJECT_TYPE);
-
-	long int guid = this->memoryReader->readInt(objectBaseAddress + Address::OBJECT_GUID);
 
 	switch (type) {
 		case 4:
@@ -64,8 +60,6 @@ void ObjectManager::createWowObject(int objectBaseAddress) {
 		default:
 			break;
 	}
-
-	//cout << "ObjectManager::createWowObject type: " << type << " guid: " << guid << endl;
 }
 
 

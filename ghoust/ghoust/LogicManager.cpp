@@ -1,7 +1,11 @@
 #include "stdafx.h"
+
 #include "LogicManager.h"
 #include "ActionManager.h"
+#include "LogicFactory.h"
+
 #include <thread>
+#include <math.h>
 
 using namespace std;
 
@@ -9,7 +13,10 @@ LogicManager* LogicManager::logicManager = NULL;
 
 const float LogicManager::degree = 0.01745325f;
 const float LogicManager::pointDegree = 0.78f;
-const float LogicManager::logicFrameRate = 33;
+const float LogicManager::logicFrameRate = 17;
+const float LogicManager::followMinRange = 7;
+const float LogicManager::rotationDifferenceCheck = 0.16f;
+const float LogicManager::rotationDifferenceToMove = 0.5f;
 
 LogicManager* LogicManager::getInstance() {
 	if(logicManager == NULL) {
@@ -23,6 +30,8 @@ LogicManager::LogicManager() {
   cout << "LogicManager: Initializing" << endl;
   character = ObjectManager::getInstance()->getPlayer();
   if (character != NULL) {
+
+	  characterLogic = LogicFactory::getLogic(character);
 	  run();
   }
   else {
@@ -43,18 +52,10 @@ void LogicManager::run()
 	while (running) {
 		Position* characterPosition = character->getPosition();
 
-		cout << "Player position: posX: " << characterPosition->posX << " posY: " << characterPosition->posY << " posZ: " << characterPosition->posZ << " rotation " << characterPosition->rotation << endl;
-
-		cout << "Player Health = " << character->getCurrentHealth() << endl;
-		
 		if (Leader != NULL) {
-			cout << "Leader: Health = " << Leader->getCurrentHealth() << endl;
-
 			Position* targetPos = Leader->getPosition();
-
-			cout << "Leader: position: posX: " << targetPos->posX << " posY: " << targetPos->posY << " posZ: " << targetPos->posZ << " rotation " << targetPos->rotation << endl;
-
 			this->follow(Leader);
+			this->characterLogic->runLogic();
 		} else {
 			Leader = ObjectManager::getInstance()->getPlayer(ABIGAIL_GUID);
 			cout << "LogicManager: cant find leader named Abigail" << endl;
@@ -67,7 +68,6 @@ void LogicManager::run()
 		}
 
 		Sleep(logicFrameRate);
-		system("cls");
 	}
 }
 
@@ -188,18 +188,24 @@ float LogicManager::findDirection(Position* characterPosition, Position* targetP
 	return direction;
 }
 
+float LogicManager::findRange(Position* characterPosition, Position* targetPosition) {
+	int x1 = characterPosition->posX;
+	int y1 = characterPosition->posY;
+	int x2 = targetPosition->posX;
+	int y2 = targetPosition->posY;
+
+	return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+}
+
 void LogicManager::follow(PlayerObject* target) {
 	Position* characterPosition = character->getPosition();
 
 	float requiredDirection = findDirection(characterPosition, target->getPosition());
-	cout << "Direction: " << requiredDirection << endl;
+
 	float rotationDifference = characterPosition->rotation > requiredDirection ? characterPosition->rotation - requiredDirection : requiredDirection - characterPosition->rotation;
 
-	ActionType rotatingAction = ActionType::NO_ACTION;
-	ActionType moveAction = ActionType::NO_ACTION;
 	boolean isMovingLeft = false;
-	cout << "rotationDifference: " << rotationDifference << endl;
-	if (rotationDifference > 0.20f) {
+	if (rotationDifference > rotationDifferenceCheck) {
 		if (characterPosition->rotation > requiredDirection) {
 			ActionManager::getInstance()->stopAction(ActionType::MOVE_LEFT);
 			ActionManager::getInstance()->startAction(ActionType::MOVE_RIGHT);
@@ -228,7 +234,12 @@ void LogicManager::follow(PlayerObject* target) {
 		else {
 			ActionManager::getInstance()->stopAction(ActionType::MOVE_LEFT);
 		}
-		
-		
+	}
+
+	if (findRange(character->getPosition(), target->getPosition()) > followMinRange) {
+		ActionManager::getInstance()->startAction(ActionType::MOVE_FORWARD);
+	}
+	else {
+		ActionManager::getInstance()->stopAction(ActionType::MOVE_FORWARD);
 	}
 }

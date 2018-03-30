@@ -149,10 +149,16 @@
   <ItemGroup>
     <ClInclude Include="ActionManager.h" />
     <ClInclude Include="ActionType.h" />
+    <ClInclude Include="ClassType.h" />
     <ClInclude Include="CreatureObject.h" />
     <ClInclude Include="Guid.h" />
+    <ClInclude Include="Logic.h" />
+    <ClInclude Include="LogicFactory.h" />
     <ClInclude Include="LogicManager.h" />
     <ClInclude Include="MemoryAddress.h" />
+    <ClInclude Include="Properties.h" />
+    <ClInclude Include="SpellType.h" />
+    <ClInclude Include="WarlockLogic.h" />
     <ClInclude Include="WowObject.h" />
     <ClInclude Include="MemoryReader.h" />
     <ClInclude Include="ObjectManager.h" />
@@ -169,12 +175,15 @@
     <ClCompile Include="LogicManager.cpp" />
     <ClCompile Include="MemoryReader.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="PlayerObject.cpp" />
+    <ClCompile Include="Properties.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WarlockLogic.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>

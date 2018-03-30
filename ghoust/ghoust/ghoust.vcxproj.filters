@@ -19,29 +19,53 @@
     <Filter Include="Header Files\Object\ObjectType">
       <UniqueIdentifier>{4490be12-6ca1-4a1d-bf29-e9a52a697296}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ActionType">
-      <UniqueIdentifier>{fb59751b-ff93-4627-94fb-d22edc60264c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\MemoryAddress">
-      <UniqueIdentifier>{83cbc89d-7c12-400f-8857-52c9c952e09d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Object\Guid">
       <UniqueIdentifier>{6ce76601-76c6-4006-8653-102c8a40ad04}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Resources">
       <UniqueIdentifier>{2ff27d46-0f0b-4b53-9257-2560aa68cf95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Logic">
+      <UniqueIdentifier>{a380204f-37f4-4e5c-9965-ea4be4cb0814}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logic\Definition">
+      <UniqueIdentifier>{166d22f2-82ec-4ab9-8ce6-1468d64394a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\ClassType">
+      <UniqueIdentifier>{687e00e3-e2c2-4c01-8a82-6d48c5563296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Properties">
+      <UniqueIdentifier>{80a2c831-36b3-4ec7-8c27-84485ee9f093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Action">
+      <UniqueIdentifier>{07f10da7-3b36-406a-b6e0-2df579905208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Action\Definition">
+      <UniqueIdentifier>{75f47374-b5ed-4c3c-93f9-9cd19b1fbf6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Action\ActionType">
+      <UniqueIdentifier>{fb59751b-ff93-4627-94fb-d22edc60264c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Memory">
+      <UniqueIdentifier>{dcdc9388-73b6-4ab5-92a7-84cc635c15c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Memory\MemoryAddress">
+      <UniqueIdentifier>{83cbc89d-7c12-400f-8857-52c9c952e09d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Memory\Definition">
+      <UniqueIdentifier>{b3f3f531-b1c3-49f0-953c-53db4f9bfae6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window">
+      <UniqueIdentifier>{49ef29d8-a578-4afa-b771-735b1558e0bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Window\Definition">
+      <UniqueIdentifier>{7453ffde-9974-4806-b010-af2a12955dac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\SpellType">
+      <UniqueIdentifier>{d021e86b-8a89-44a0-94ee-44461e264eef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MemoryReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectType.h">
       <Filter>Header Files\Object\ObjectType</Filter>
     </ClInclude>
@@ -54,14 +78,11 @@
     <ClInclude Include="WowObject.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="LogicManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ActionType.h">
-      <Filter>Header Files\ActionType</Filter>
+      <Filter>Header Files\Action\ActionType</Filter>
     </ClInclude>
     <ClInclude Include="MemoryAddress.h">
-      <Filter>Header Files\MemoryAddress</Filter>
+      <Filter>Header Files\Memory\MemoryAddress</Filter>
     </ClInclude>
     <ClInclude Include="Guid.h">
       <Filter>Header Files\Object\Guid</Filter>
@@ -78,21 +99,39 @@
     <ClInclude Include="CreatureObject.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Logic.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="WarlockLogic.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicFactory.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassType.h">
+      <Filter>Header Files\Object\ClassType</Filter>
+    </ClInclude>
+    <ClInclude Include="Properties.h">
+      <Filter>Header Files\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicManager.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionManager.h">
+      <Filter>Header Files\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryReader.h">
+      <Filter>Header Files\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowManager.h">
+      <Filter>Header Files\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellType.h">
+      <Filter>Header Files\Object\SpellType</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MemoryReader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ActionManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LogicManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ghoust.cpp">
@@ -100,6 +139,27 @@
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>Header Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="WarlockLogic.cpp">
+      <Filter>Header Files\Logic\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="Properties.cpp">
+      <Filter>Header Files\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicManager.cpp">
+      <Filter>Header Files\Logic\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionManager.cpp">
+      <Filter>Header Files\Action\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="MemoryReader.cpp">
+      <Filter>Header Files\Memory\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowManager.cpp">
+      <Filter>Header Files\Window\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerObject.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
