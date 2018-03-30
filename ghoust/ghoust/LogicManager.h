@@ -14,11 +14,13 @@ class LogicManager
 
 		static const float degree;
 		static const float pointDegree;
+		static const float logicFrameRate;
+
+		PlayerObject* character;
 
 	private:
 		void run();
 
-		void getPosition();
-
-		float findDirection(PlayerObject* target);
+		float findDirection(Position* characterPosition, Position* targetPosition);
+		void follow(PlayerObject* target);
 };
