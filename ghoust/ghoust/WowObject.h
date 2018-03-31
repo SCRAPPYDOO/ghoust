@@ -23,6 +23,8 @@ class WowObject {
 		static const int FIRST_BUFF_OFFSET = 0xBC;
 		static const int FIRST_DEBUFF_OFFSET = 0x13C;
 		static const int NEXT_BUFF_OFFSET = 0x4;
+    
+        static const int MAX_BUFF_SIZE = 16;
 
 	protected:
 		int baseAddress;
@@ -52,9 +54,19 @@ class WowObject {
 		}
 
 		bool hasBuff(int spellId) {
-			int firstBuff = getMemoryReader()->readInt(this->baseAddress + FIRST_BUFF_OFFSET);
-			cout << " first buff " << firstBuff << " adress: " << &firstBuff << endl;
-			return false;
+            int lastAddress;
+            for(int i=0; i<MAX_BUFF_SIZE; i++) {
+                if(i == 0) {
+                    lastAddress = getMemoryReader()->readInt(this->baseAddress + FIRST_BUFF_OFFSET);
+                } else {
+                    lastAddress = getMemoryReader()->readInt(lastAddress + NEXT_BUFF_OFFSET);
+                }
+                cout << " first buff " << firstBuff << " adress: " << &firstBuff << endl;
+                if(lastAddress == spellId) {
+                    return true;
+                }
+            }
+            return false;
 		}
 	protected:
 		MemoryReader * getMemoryReader() { return MemoryReader::getInstance(); }

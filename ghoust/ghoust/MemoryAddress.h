@@ -1,5 +1,8 @@
 #pragma once
 
+//https://www.ownedcore.com/forums/world-of-warcraft/world-of-warcraft-bots-programs/wow-memory-editing/328263-wow-1-12-1-5875-info-dump-thread-4.html
+//https://www.ownedcore.com/forums/world-of-warcraft/world-of-warcraft-bots-programs/wow-memory-editing/328263-wow-1-12-1-5875-info-dump-thread-6.html
+//https://www.ownedcore.com/forums/world-of-warcraft/world-of-warcraft-bots-programs/wow-memory-editing/328263-wow-1-12-1-5875-info-dump-thread-22.html
 enum STATIC_POINTER {
 	PLAYER_GUID = 0x00C4DA98, //OK
 	TARGET_GUID = 0x00B4E2D8, //OK
