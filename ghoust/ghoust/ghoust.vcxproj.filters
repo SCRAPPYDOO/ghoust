@@ -61,8 +61,11 @@
     <Filter Include="Header Files\Window\Definition">
       <UniqueIdentifier>{7453ffde-9974-4806-b010-af2a12955dac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Object\SpellType">
+    <Filter Include="Header Files\Object\SpellDefinition">
       <UniqueIdentifier>{d021e86b-8a89-44a0-94ee-44461e264eef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{b436d6ed-3158-4131-8f3c-ae7c8d31f59e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -126,8 +129,14 @@
     <ClInclude Include="WindowManager.h">
       <Filter>Header Files\Window</Filter>
     </ClInclude>
-    <ClInclude Include="SpellType.h">
-      <Filter>Header Files\Object\SpellType</Filter>
+    <ClInclude Include="SpellDefinition.h">
+      <Filter>Header Files\Object\SpellDefinition</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellManager.h">
+      <Filter>Header Files\Object\SpellDefinition</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="WindowManager.cpp">
       <Filter>Header Files\Window\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="SpellManager.cpp">
+      <Filter>Header Files\Object\SpellDefinition</Filter>
+    </ClCompile>
+    <ClCompile Include="Logic.cpp">
+      <Filter>Header Files\Logic\Definition</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

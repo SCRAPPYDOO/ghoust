@@ -14,7 +14,6 @@ LogicManager* LogicManager::logicManager = NULL;
 const float LogicManager::degree = 0.01745325f;
 const float LogicManager::pointDegree = 0.78f;
 const float LogicManager::logicFrameRate = 17;
-const float LogicManager::followMinRange = 7;
 const float LogicManager::rotationDifferenceCheck = 0.16f;
 const float LogicManager::rotationDifferenceToMove = 0.5f;
 
@@ -189,10 +188,10 @@ float LogicManager::findDirection(Position* characterPosition, Position* targetP
 }
 
 float LogicManager::findRange(Position* characterPosition, Position* targetPosition) {
-	int x1 = characterPosition->posX;
-	int y1 = characterPosition->posY;
-	int x2 = targetPosition->posX;
-	int y2 = targetPosition->posY;
+	float x1 = characterPosition->posX;
+	float y1 = characterPosition->posY;
+	float x2 = targetPosition->posX;
+	float y2 = targetPosition->posY;
 
 	return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 }
@@ -236,10 +235,10 @@ void LogicManager::follow(PlayerObject* target) {
 		}
 	}
 
-	if (findRange(character->getPosition(), target->getPosition()) > followMinRange) {
+	if (findRange(character->getPosition(), target->getPosition()) > startFollowRange) {
 		ActionManager::getInstance()->startAction(ActionType::MOVE_FORWARD);
 	}
-	else {
+	else if(findRange(character->getPosition(), target->getPosition()) < stopFollowRange) {
 		ActionManager::getInstance()->stopAction(ActionType::MOVE_FORWARD);
 	}
 }

@@ -5,6 +5,8 @@
 #include "MemoryReader.h"
 #include "PlayerObject.h"
 
+using namespace std;
+
 class ObjectManager {
 	public:
 		~ObjectManager();
@@ -16,7 +18,7 @@ class ObjectManager {
 	private:
 		static ObjectManager* objectManager;
 		MemoryReader* memoryReader;
-		std::map<int, PlayerObject*> playerList;
+		map<int, PlayerObject*> playerList;
 		int baseAddress;
 		PlayerObject* player;
 

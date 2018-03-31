@@ -2,31 +2,62 @@
 
 #include "PlayerObject.h"
 #include "ActionManager.h"
-#include "SpellType.h"
+#include "SpellDefinition.h"
+#include "Properties.h"
+#include "Utils.h"
+
 #include <list>
 #include <iterator>
-
+#include <map>
+#include <ctime>
 
 using namespace std;
+
+using namespace std;
+
+enum LogicAction {
+	NOTHING,
+	EAT_DRINK_ACTION,
+};
 
 class Logic
 {
 	public:
-		Logic(PlayerObject * player) { this->player = player;  }
-		virtual void runLogic() = 0;
-	protected:
-		PlayerObject * player;
-		list<SpellType> classBuffList;
-		void buff() {
-			list <SpellType> ::iterator it;
-			for (it = classBuffList.begin(); it != classBuffList.end(); ++it) {
-				if (!player->hasBuff(*it)) {
-					ActionManager::getInstance()->startAction(WarlockActionType::CAST_DEMON_SKIN);
-					Sleep(50);
-					ActionManager::getInstance()->stopAction(WarlockActionType::CAST_DEMON_SKIN);
-				}
-			}
-		}
+		void runLogic();
 
+		~Logic();
+
+	protected:
+		Logic(PlayerObject * player);
+		PlayerObject * player;
+
+		long actionTimer = 0;
+		time_t lastTimeSecond = 0;
+
+		map<LogicAction, long> timers;
+
+		LogicAction logicAction = NOTHING;
+
+		void startAction(int actionType) { ActionManager::getInstance()->startAction(actionType); }
+		void stopAction(int actionType) { ActionManager::getInstance()->stopAction(actionType); }
+		void doAction(int actionType, int sleepTime);
+		void doAction(int actionType);
+		void castSpell(SpellId spellId);
+
+		/*
+			BUFFS
+		*/
+		void buffParty();
+		void buffTarget(PlayerObject* target);
+		void buffPlayer();
+
+		/*
+			EAT DRINK
+		*/
+		void eat(time_t timeDiff);
+
+	protected:
+		virtual bool checkIfCanCastSpell(Spell* spell) = 0;
+		virtual list<SpellId> getBuffList() = 0;
 };
 

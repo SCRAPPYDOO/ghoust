@@ -157,7 +157,9 @@
     <ClInclude Include="LogicManager.h" />
     <ClInclude Include="MemoryAddress.h" />
     <ClInclude Include="Properties.h" />
-    <ClInclude Include="SpellType.h" />
+    <ClInclude Include="SpellDefinition.h" />
+    <ClInclude Include="SpellManager.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="WarlockLogic.h" />
     <ClInclude Include="WowObject.h" />
     <ClInclude Include="MemoryReader.h" />
@@ -172,10 +174,12 @@
   <ItemGroup>
     <ClCompile Include="ActionManager.cpp" />
     <ClCompile Include="Ghoust.cpp" />
+    <ClCompile Include="Logic.cpp" />
     <ClCompile Include="LogicManager.cpp" />
     <ClCompile Include="MemoryReader.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Properties.cpp" />
+    <ClCompile Include="SpellManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -3,17 +3,22 @@
 
 WarlockLogic::WarlockLogic(PlayerObject * player) : Logic(player)
 {
-	classBuffList = { 
-		SpellType::WARLOCK_DEMON_SKIN_RANK_1,
-	};
 }
-
 
 WarlockLogic::~WarlockLogic()
 {
 }
 
-void WarlockLogic::runLogic()
-{
-	buff();
+bool WarlockLogic::checkIfCanCastSpell(Spell* spell) {
+	return true;
+}
+
+list<SpellId> WarlockLogic::getBuffList() {
+	list<SpellId> list;
+	if (player->getCurrentLevel() > 9) {
+		list = { SpellId::WARLOCK_DEMON_SKIN_RANK_2  };
+	} else {
+		list = { SpellId::WARLOCK_DEMON_SKIN_RANK_1  };
+	}
+	return list;
 }

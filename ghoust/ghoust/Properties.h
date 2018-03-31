@@ -9,4 +9,6 @@ class Properties {
 		static ClassType playerClassType;
 		static string getClassTypeName(ClassType classType);
 		static string getPlayerClassTypeName();
+
+		static const int SPELL_CAST_TIME = 500;
 };

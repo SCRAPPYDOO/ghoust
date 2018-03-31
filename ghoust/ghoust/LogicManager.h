@@ -16,7 +16,8 @@ class LogicManager
 		static const float degree;
 		static const float pointDegree;
 		static const float logicFrameRate;
-		static const float followMinRange;
+		static const int startFollowRange = 8;
+		static const int stopFollowRange = 5;
 		static const float rotationDifferenceCheck;
 		static const float rotationDifferenceToMove;
 

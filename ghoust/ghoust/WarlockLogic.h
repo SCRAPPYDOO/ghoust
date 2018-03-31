@@ -8,6 +8,10 @@ class WarlockLogic : public Logic
 		WarlockLogic(PlayerObject * player);
 		~WarlockLogic();
 
-		void runLogic();
+		
+
+	protected:
+		bool checkIfCanCastSpell(Spell * spell);
+		list<SpellId> getBuffList();
 };
 
