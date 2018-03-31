@@ -158,9 +158,6 @@
     <ClCompile Include="WindowManager.cpp">
       <Filter>Header Files\Window\Definition</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ghoust.rc">

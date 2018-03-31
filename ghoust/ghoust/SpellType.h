@@ -4,7 +4,7 @@ enum SpellType {
 	/*
 		WARLOCK
 	*/
-	DEMON_SKIN,
+	WARLOCK_DEMON_SKIN_RANK_1 = 687,
 
 };
 

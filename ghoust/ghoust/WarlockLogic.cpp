@@ -4,7 +4,7 @@
 WarlockLogic::WarlockLogic(PlayerObject * player) : Logic(player)
 {
 	classBuffList = { 
-		SpellType::DEMON_SKIN
+		SpellType::WARLOCK_DEMON_SKIN_RANK_1,
 	};
 }
 

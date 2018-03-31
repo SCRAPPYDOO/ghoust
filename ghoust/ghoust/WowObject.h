@@ -20,9 +20,6 @@ class WowObject {
 		static const int Z_POS_OFFSET = 0x9BC + 4;
 		static const int ROTATION_OFFSET = 0x09C4;
 		static const int DESCRIPTOR_OFFSET = 0x8;
-		static const int FIRST_BUFF_OFFSET = 0xBC;
-		static const int FIRST_DEBUFF_OFFSET = 0x13C;
-		static const int NEXT_BUFF_OFFSET = 0x4;
     
         static const int MAX_BUFF_SIZE = 16;
 
@@ -53,21 +50,6 @@ class WowObject {
 			return position;
 		}
 
-		bool hasBuff(int spellId) {
-            int lastAddress;
-            for(int i=0; i<MAX_BUFF_SIZE; i++) {
-                if(i == 0) {
-                    lastAddress = getMemoryReader()->readInt(this->baseAddress + FIRST_BUFF_OFFSET);
-                } else {
-                    lastAddress = getMemoryReader()->readInt(lastAddress + NEXT_BUFF_OFFSET);
-                }
-                cout << " first buff " << firstBuff << " adress: " << &firstBuff << endl;
-                if(lastAddress == spellId) {
-                    return true;
-                }
-            }
-            return false;
-		}
 	protected:
 		MemoryReader * getMemoryReader() { return MemoryReader::getInstance(); }
 };

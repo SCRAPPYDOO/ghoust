@@ -22,6 +22,8 @@ class Logic
 			for (it = classBuffList.begin(); it != classBuffList.end(); ++it) {
 				if (!player->hasBuff(*it)) {
 					ActionManager::getInstance()->startAction(WarlockActionType::CAST_DEMON_SKIN);
+					Sleep(50);
+					ActionManager::getInstance()->stopAction(WarlockActionType::CAST_DEMON_SKIN);
 				}
 			}
 		}
