@@ -5,6 +5,6 @@
       location = "group:../../ghoust">
    </FileRef>
    <FileRef
-      location = "self:GhoustMac.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -18,24 +18,29 @@ void Logic::runLogic() {
 	time_t timeDiff = currentTimeSecond - lastTimeSecond;
 	lastTimeSecond = currentTimeSecond;
 
-	if (logicAction != NOTHING) {
-		if (timers[logicAction] < timeDiff) {
-			logicAction = NOTHING;
-			timers[logicAction] = EAT_TIMER_SECONDS;
-			doAction(ActionType::JUMP);
-			cout << "Logic: End of eating and drinking ! time to fight" << endl;
-		}
-		else {
-			timers[logicAction] -= timeDiff;
-			return;
-		};
-	}
+    if(!player->isInCombat()) {
+        if (logicAction != NOTHING) {
+            if (timers[logicAction] < timeDiff) {
+                logicAction = NOTHING;
+                timers[logicAction] = EAT_TIMER_SECONDS;
+                doAction(ActionType::JUMP);
+                cout << "Logic: End of eating and drinking ! time to fight" << endl;
+            }
+            else {
+                timers[logicAction] -= timeDiff;
+                return;
+            };
+        }
 
-	// if combat  do not  eat ,  if  eating and start combat stop eat  fight
-
-	eat(timeDiff);
-
-	buffPlayer();
+        // if combat  do not  eat ,  if  eating and start combat stop eat  fight
+        eat(timeDiff);
+    } else {
+        //scan
+        
+        
+        
+        buffPlayer();
+    }
 }
 
 void Logic::doAction(int actionType) {
