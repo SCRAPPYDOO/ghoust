@@ -1,15 +1,9 @@
 #pragma once
 
 #include "MemoryReader.h"
+#include "Position.h"
 
 using namespace std;
-
-struct Position {
-	float posX;
-	float posY;
-	float posZ;
-	float rotation;
-};
 
 class WowObject {
 	protected:

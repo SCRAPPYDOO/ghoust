@@ -23,13 +23,19 @@ enum LogicAction {
 class Logic
 {
 	public:
-		void runLogic();
+		void onLoop();
 
 		~Logic();
 
 	protected:
+		static const int startFollowRange = 8;
+		static const int stopFollowRange = 5;
+		static const float rotationDifferenceCheck;
+		static const float rotationDifferenceToMove;
+
 		Logic(PlayerObject * player);
-		PlayerObject * player;
+		PlayerObject * player = NULL;
+		PlayerObject * leader = NULL;
 
 		long actionTimer = 0;
 		time_t lastTimeSecond = 0;
@@ -37,6 +43,8 @@ class Logic
 		map<LogicAction, long> timers;
 
 		LogicAction logicAction = NOTHING;
+
+		void followLeader();
 
 		void startAction(int actionType) { ActionManager::getInstance()->startAction(actionType); }
 		void stopAction(int actionType) { ActionManager::getInstance()->stopAction(actionType); }
@@ -54,7 +62,7 @@ class Logic
 		/*
 			EAT DRINK
 		*/
-		void eat(time_t timeDiff);
+		void eat();
 
 	protected:
 		virtual bool checkIfCanCastSpell(Spell* spell) = 0;

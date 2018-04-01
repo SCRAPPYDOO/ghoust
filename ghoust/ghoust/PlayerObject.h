@@ -2,10 +2,10 @@
 
 #include "CreatureObject.h"
 
-class PlayerObject : public Creatureobject
+class PlayerObject : public CreatureObject
 {
 	public:
-		PlayerObject(unsigned int baseAddress) : Creatureobject(baseAddress) {}
+		PlayerObject(unsigned int baseAddress) : CreatureObject(baseAddress) {}
 		~PlayerObject() {}
 };
 

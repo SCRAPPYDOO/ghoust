@@ -1,5 +1,8 @@
 #include "stdafx.h"
+
 #include "ObjectManager.h"
+#include "ObjectType.h"
+
 #include <iostream>
 
 using namespace std;
@@ -10,7 +13,7 @@ ObjectManager::ObjectManager()
 {
 	this->memoryReader = MemoryReader::getInstance();
 	this->baseAddress = memoryReader->readInt(Address::OBJECT_MANAGER);
-	cout << "ObjectManager: Initializing - Base Address = " << &this->baseAddress << endl;
+	cout << "ObjectManager: Initializing - ObjectManager Base Address = " << &this->baseAddress << endl;
 }
 
 ObjectManager::~ObjectManager()
@@ -21,31 +24,37 @@ ObjectManager * ObjectManager::getInstance()
 {
 	if (objectManager == NULL) {
 		objectManager = new ObjectManager();
-		objectManager->setWowObjects();
+		objectManager->scanWowObjects();
 	}
 
 	return objectManager;
 }
 
-void ObjectManager::setWowObjects() {
+void ObjectManager::scanWowObjects() {
 	cout << "ObjectManager: Scanning for wow objects" << endl;
 
-	int wowObject = this->memoryReader->readInt(this->baseAddress + Address::FIRST_OBJECT);
+	/*
+		Clear lists
+	*/
+	this->playerList.clear();
+	this->npcList.clear();
+
+	int firstObject = this->memoryReader->readInt(this->baseAddress + Address::FIRST_OBJECT);
 	int playerGuid = this->memoryReader->readInt(STATIC_POINTER::PLAYER_GUID);
 
-	while (wowObject != 0 && (wowObject & 1) == 0)
+	while (firstObject != 0 && (firstObject & 1) == 0)
 	{
-		if (playerGuid == this->memoryReader->readInt(wowObject + Address::OBJECT_GUID)) {
-			this->player = new PlayerObject(wowObject);
+		if (playerGuid == this->memoryReader->readInt(firstObject + Address::OBJECT_GUID)) {
+			this->player = new PlayerObject(firstObject);
 		} else {
-			this->createWowObject(wowObject);
+			this->createWowObject(firstObject);
 		}
 
-		int nextWowObject = this->memoryReader->readInt(wowObject + Address::NEXT_OBJECT);
-		if (nextWowObject == wowObject) {
+		int nextWowObject = this->memoryReader->readInt(firstObject + Address::NEXT_OBJECT);
+		if (nextWowObject == firstObject) {
 			break;
 		} else {
-			wowObject = nextWowObject;
+			firstObject = nextWowObject;
 		}
 	}
 }
@@ -54,12 +63,23 @@ void ObjectManager::createWowObject(int objectBaseAddress) {
 	int type = this->memoryReader->readInt(objectBaseAddress + Address::OBJECT_TYPE);
 
 	switch (type) {
-		case 4:
+		case ObjectType::PLAYER:
 			this->addPlayerObject(new PlayerObject(objectBaseAddress));
+			break;
+		case ObjectType::UNIT:
+			this->addNpcObject(new NpcObject(objectBaseAddress));
 			break;
 		default:
 			break;
 	}
+}
+
+void ObjectManager::addPlayerObject(PlayerObject* playerObject) { 
+	this->playerList[playerObject->getGuid()] = playerObject; 
+}
+
+void ObjectManager::addNpcObject(NpcObject* npcObject) {
+	this->npcList[npcObject->getGuid()] = npcObject;
 }
 
 

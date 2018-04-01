@@ -151,11 +151,15 @@
     <ClInclude Include="ActionType.h" />
     <ClInclude Include="ClassType.h" />
     <ClInclude Include="CreatureObject.h" />
+    <ClInclude Include="Flag.h" />
     <ClInclude Include="Guid.h" />
     <ClInclude Include="Logic.h" />
     <ClInclude Include="LogicFactory.h" />
     <ClInclude Include="LogicManager.h" />
     <ClInclude Include="MemoryAddress.h" />
+    <ClInclude Include="MovementHelper.h" />
+    <ClInclude Include="NpcObject.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="Properties.h" />
     <ClInclude Include="SpellDefinition.h" />
     <ClInclude Include="SpellManager.h" />
@@ -177,6 +181,8 @@
     <ClCompile Include="Logic.cpp" />
     <ClCompile Include="LogicManager.cpp" />
     <ClCompile Include="MemoryReader.cpp" />
+    <ClCompile Include="MovementHelper.cpp" />
+    <ClCompile Include="NpcObject.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="SpellManager.cpp" />

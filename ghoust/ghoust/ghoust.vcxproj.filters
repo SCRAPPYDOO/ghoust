@@ -67,6 +67,15 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{b436d6ed-3158-4131-8f3c-ae7c8d31f59e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Object\Flag">
+      <UniqueIdentifier>{86021fbf-f673-44f4-93d1-3c797d71bb99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object\Definition">
+      <UniqueIdentifier>{cfa3ca77-667a-4952-9280-6404b52134d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Movement">
+      <UniqueIdentifier>{d30175a2-8056-49d9-abbc-924ddfa16a75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ObjectType.h">
@@ -138,6 +147,18 @@
     <ClInclude Include="Utils.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Flag.h">
+      <Filter>Header Files\Object\Flag</Filter>
+    </ClInclude>
+    <ClInclude Include="NpcObject.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementHelper.h">
+      <Filter>Header Files\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Header Files\Movement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -145,9 +166,6 @@
     </ClCompile>
     <ClCompile Include="Ghoust.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectManager.cpp">
-      <Filter>Header Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="WarlockLogic.cpp">
       <Filter>Header Files\Logic\Definition</Filter>
@@ -172,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="Logic.cpp">
       <Filter>Header Files\Logic\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Header Files\Object\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="NpcObject.cpp">
+      <Filter>Header Files\Object\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="MovementHelper.cpp">
+      <Filter>Header Files\Movement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

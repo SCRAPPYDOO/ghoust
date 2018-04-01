@@ -1,8 +1,5 @@
 #pragma once
 
-// https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
-
-
 enum KeyBinding {
 	ONE = 0x31,
 	TWO = 0x32,

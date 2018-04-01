@@ -1,11 +1,12 @@
 #pragma once
 
 #include "WowObject.h"
+#include "Flag.h"
 
-class Creatureobject : public WowObject {
+class CreatureObject : public WowObject {
 	public :
-		Creatureobject(int baseAddress) : WowObject(baseAddress) {}
-		~Creatureobject() {}
+		CreatureObject(int baseAddress) : WowObject(baseAddress) {}
+		~CreatureObject() {}
 
 	protected: 
 
@@ -24,7 +25,6 @@ class Creatureobject : public WowObject {
 		static const int NEXT_BUFF_OFFSET = 0x4;
     
         static const int FLAGS_OFFSET = 0x000000B8;
-        static const int FLAG_IS_IN_COMBAT = 0x80000;
 
 	public:
 		int getCurrentHealth() { return getMemoryReader()->readInt(descriptorAddress + CURRENT_HEALTH_OFFSET); }
@@ -34,7 +34,7 @@ class Creatureobject : public WowObject {
 		int getCurrentLevel() { return getMemoryReader()->readInt(descriptorAddress + CURRENT_LEVEL_OFFSET); }
         int getFlags() { return getMemoryReader()->readInt(descriptorAddress + FLAGS_OFFSET); }
     
-        bool isInCombat() { return hasFlag(FLAG_IS_IN_COMBAT) }
+		bool isInCombat() { return hasFlag(Flag::FLAG_IS_IN_COMBAT); }
     
 		bool hasBuff(int spellId) {
 			int lastAddress;
@@ -53,7 +53,7 @@ class Creatureobject : public WowObject {
 			return false;
 		}
     
-        bool hasFlag(FlagType flagType) {
-            return getFlags() & flagType;
+        bool hasFlag(Flag flag) {
+            return getFlags() & flag;
         }
 };
