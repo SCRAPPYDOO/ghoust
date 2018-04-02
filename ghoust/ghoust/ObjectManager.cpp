@@ -24,14 +24,36 @@ ObjectManager * ObjectManager::getInstance()
 {
 	if (objectManager == NULL) {
 		objectManager = new ObjectManager();
+		objectManager->scanForPlayer();
 		objectManager->scanWowObjects();
 	}
 
 	return objectManager;
 }
 
+void ObjectManager::scanForPlayer() {
+	int firstObject = this->memoryReader->readInt(this->baseAddress + Address::FIRST_OBJECT);
+	unsigned int playerGuid = this->memoryReader->readInt(STATIC_POINTER::PLAYER_GUID);
+
+	while (firstObject != 0 && (firstObject & 1) == 0)
+	{
+		if (playerGuid == this->memoryReader->readUnsignedInt(firstObject + Address::OBJECT_GUID)) {
+			this->player = new PlayerObject(firstObject);
+			return;
+		}
+
+		int nextWowObject = this->memoryReader->readInt(firstObject + Address::NEXT_OBJECT);
+		if (nextWowObject == firstObject) {
+			break;
+		}
+		else {
+			firstObject = nextWowObject;
+		}
+	}
+}
+
 void ObjectManager::scanWowObjects() {
-	cout << "ObjectManager: Scanning for wow objects" << endl;
+	//cout << "ObjectManager: Scanning for wow objects" << endl;
 
 	/*
 		Clear lists
@@ -40,15 +62,10 @@ void ObjectManager::scanWowObjects() {
 	this->npcList.clear();
 
 	int firstObject = this->memoryReader->readInt(this->baseAddress + Address::FIRST_OBJECT);
-	int playerGuid = this->memoryReader->readInt(STATIC_POINTER::PLAYER_GUID);
 
 	while (firstObject != 0 && (firstObject & 1) == 0)
 	{
-		if (playerGuid == this->memoryReader->readInt(firstObject + Address::OBJECT_GUID)) {
-			this->player = new PlayerObject(firstObject);
-		} else {
-			this->createWowObject(firstObject);
-		}
+		this->createWowObject(firstObject);
 
 		int nextWowObject = this->memoryReader->readInt(firstObject + Address::NEXT_OBJECT);
 		if (nextWowObject == firstObject) {

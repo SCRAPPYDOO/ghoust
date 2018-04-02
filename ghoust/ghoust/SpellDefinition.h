@@ -12,6 +12,7 @@ enum SpellId {
 	*/
 	WARLOCK_DEMON_SKIN_RANK_1 = 687,
 	WARLOCK_DEMON_SKIN_RANK_2 = 696,
+	WARLOCK_SHADOW_BOLT = 686,
 
 };
 
@@ -45,6 +46,7 @@ struct Spell {
 static map<SpellId, Spell*> spellList = {
 	{ WARLOCK_DEMON_SKIN_RANK_1 , new Spell(WARLOCK_DEMON_SKIN_RANK_1, SECOND * 2, MINUTE * 30, 50, WarlockActionType::CAST_DEMON_SKIN) },
 	{ WARLOCK_DEMON_SKIN_RANK_2 , new Spell(WARLOCK_DEMON_SKIN_RANK_2, SECOND * 2, MINUTE * 30, 120, WarlockActionType::CAST_DEMON_SKIN) },
+	{ WARLOCK_SHADOW_BOLT , new Spell(WARLOCK_SHADOW_BOLT, SECOND * 2, 25, WarlockActionType::CAST_SHADOW_BOLT) },
 };
 
 static int getSpellManaCost(SpellId spellId) {

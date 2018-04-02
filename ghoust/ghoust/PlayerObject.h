@@ -5,7 +5,9 @@
 class PlayerObject : public CreatureObject
 {
 	public:
-		PlayerObject(unsigned int baseAddress) : CreatureObject(baseAddress) {}
+		PlayerObject(int baseAddress) : CreatureObject(baseAddress) {}
 		~PlayerObject() {}
+
+		boolean isManaUser();
 };
 

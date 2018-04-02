@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Properties.h"
 
-ClassType Properties::playerClassType;
+BotType Properties::botType;
 
-string Properties::getClassTypeName(ClassType classType)
+string Properties::getClassTypeName(int classType)
 {
 	string className = "UKNOWN CLASS";
 	switch (classType) {
@@ -19,9 +19,4 @@ string Properties::getClassTypeName(ClassType classType)
 	}
 
 	return className;
-}
-
-string Properties::getPlayerClassTypeName()
-{
-	return Properties::getClassTypeName(Properties::playerClassType);
 }

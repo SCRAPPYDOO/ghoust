@@ -12,15 +12,16 @@ class LogicFactory {
 	public:
 		static Logic* getLogic(PlayerObject * player) {
 			Logic* selectedLogic = NULL;
-			switch (Properties::playerClassType) {
+
+			switch (player->getClass()) {
 				case WARLOCK:
-					selectedLogic = new WarlockLogic(player);
+					selectedLogic = new WarlockLogic();
 					break;
 				default:
 					break;
 			}
 			
-			string className = Properties::getPlayerClassTypeName();
+			string className = Properties::getClassTypeName(player->getClass());
 			cout << "LogicFactory: loading " << className << " logic settings" << endl;
 
 			return selectedLogic;

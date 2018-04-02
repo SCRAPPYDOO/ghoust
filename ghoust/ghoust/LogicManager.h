@@ -13,11 +13,10 @@ class LogicManager
 		LogicManager();
 		static LogicManager* logicManager;
 
-		static const float logicFrameRate;
+		static const int logicFrameRate = 17;
 
-		PlayerObject* character;
 		Logic* characterLogic;
 
-	private:
+	public:
 		void run();
 };

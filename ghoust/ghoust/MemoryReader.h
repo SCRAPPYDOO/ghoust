@@ -34,7 +34,13 @@ class MemoryReader
 		float readFloat(LPVOID address);
 		float readFloat(int address);
 
+		byte readByte(LPVOID address);
+		byte readByte(int address);
+
 		int readInt(Address address);
 		int readInt(LPVOID address);
 		int readInt(int address);
+
+		unsigned int readUnsignedInt(LPVOID address);
+		unsigned int readUnsignedInt(int address);
 };

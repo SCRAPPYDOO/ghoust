@@ -6,9 +6,10 @@
 using namespace std;
 
 int main() {
-	Properties::playerClassType = ClassType::WARLOCK;
+	Properties::botType = BotType::FOLLOWER;
 
-	LogicManager::getInstance();
+	LogicManager* logicManager = LogicManager::getInstance();
+	logicManager->run();
 	getchar();
 	return 0;
 }

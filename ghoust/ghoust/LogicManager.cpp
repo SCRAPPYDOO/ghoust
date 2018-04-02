@@ -4,12 +4,12 @@
 #include "LogicFactory.h"
 
 #include <thread>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 LogicManager* LogicManager::logicManager = NULL;
-
-const float LogicManager::logicFrameRate = 17;
 
 LogicManager* LogicManager::getInstance() {
 	if(logicManager == NULL) {
@@ -21,15 +21,7 @@ LogicManager* LogicManager::getInstance() {
 
 LogicManager::LogicManager() {
   cout << "LogicManager: Initializing" << endl;
-  character = ObjectManager::getInstance()->getPlayer();
-  if (character != NULL) {
 
-	  characterLogic = LogicFactory::getLogic(character);
-	  run();
-  }
-  else {
-	  cout << "LogicManager: Cant find  character !" << endl;
-  }
 }
 
 LogicManager::~LogicManager()
@@ -38,11 +30,42 @@ LogicManager::~LogicManager()
 
 void LogicManager::run()
 {
-	boolean running = true;
+	PlayerObject* character = ObjectManager::getInstance()->getPlayer();
+	if (character != NULL) {
+		bool running = true;
+		characterLogic = LogicFactory::getLogic(character);
+		long lastTimeSecond = 0;
+		long loopTimer = 50; //logicFrameRate;
 
-	while (running) {
-		this->characterLogic->onLoop();
+		while (running) {
 
-		Sleep(logicFrameRate);
+			SYSTEMTIME st;
+
+			GetSystemTime(&st);
+
+			FILETIME  filetime;
+
+			GetSystemTimeAsFileTime(&filetime);
+
+			//cout << "LogicManager: filetime->dwHighDateTime " << filetime.dwHighDateTime << endl;
+			//cout << "LogicManager: filetime->dwLowDateTime; " << filetime.dwLowDateTime << endl;
+			long currentTimeSecond = filetime.dwLowDateTime;
+			long timeDiff = currentTimeSecond - lastTimeSecond;
+			lastTimeSecond = currentTimeSecond;
+
+			//cout << "LogicManager: loopTimer " << loopTimer << " " << timeDiff << endl;
+
+			if (loopTimer < timeDiff) {
+				//cout << "LogicManager: Time " << st.wMinute << " " << st.wSecond << endl;
+				this->characterLogic->onLoop(timeDiff);
+				loopTimer = logicFrameRate;
+			}
+			else {
+				loopTimer -= timeDiff;
+			}
+		}
+	}
+	else {
+		cout << "LogicManager: Cant find  character !" << endl;
 	}
 }

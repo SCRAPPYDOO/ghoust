@@ -5,7 +5,7 @@
 class WarlockLogic : public Logic
 {
 	public:
-		WarlockLogic(PlayerObject * player);
+		WarlockLogic();
 		~WarlockLogic();
 
 		
@@ -13,5 +13,6 @@ class WarlockLogic : public Logic
 	protected:
 		bool checkIfCanCastSpell(Spell * spell);
 		list<SpellId> getBuffList();
+		SpellId selectSpell(NpcObject* target);
 };
 

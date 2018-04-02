@@ -200,6 +200,9 @@
     <ClCompile Include="MovementHelper.cpp">
       <Filter>Header Files\Movement</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerObject.cpp">
+      <Filter>Header Files\Object\Definition</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ghoust.rc">

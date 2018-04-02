@@ -165,7 +165,6 @@ void MemoryReader::calculateWowBaseAddress2() {
 		{
 			system("CLS");
 			std::cout << "Failed to find module" << "" << std::endl;
-			Sleep(200);
 		}
 	}
 
@@ -215,10 +214,30 @@ int MemoryReader::readInt(LPVOID address) {
 	return 0;
 }
 
+unsigned int MemoryReader::readUnsignedInt(LPVOID address) {
+	unsigned int value;
+
+	if (ReadProcessMemory(this->processHandler, address, &value, sizeof(value), NULL)) {
+		//cout << "Read Int from address " << address << " value: " << value << endl;
+		return value;
+	}
+	return 0;
+}
+
 float MemoryReader::readFloat(LPVOID address) {
 	float value;
 	if (ReadProcessMemory(this->processHandler, address, &value, sizeof(value), NULL)) {
 		//cout << "Read Float from address " << address << " value: " << value << endl;
+		return value;
+	}
+	return 0;
+}
+
+byte MemoryReader::readByte(LPVOID address) {
+	byte value;
+
+	if (ReadProcessMemory(this->processHandler, address, &value, sizeof(value), NULL)) {
+		//cout << "Read Int from address " << address << " value: " << value << endl;
 		return value;
 	}
 	return 0;
@@ -240,4 +259,10 @@ float MemoryReader::readFloat(int address) {
 	return this->readFloat((LPVOID)address);
 }
 
+byte MemoryReader::readByte(int address) {
+	return this->readByte((LPVOID)address);
+}
 
+unsigned int MemoryReader::readUnsignedInt(int address) {
+	return this->readUnsignedInt((LPVOID)address);
+}

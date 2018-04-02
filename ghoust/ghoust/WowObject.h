@@ -22,7 +22,7 @@ class WowObject {
 		int descriptorAddress;
 
 	public:
-		WowObject(unsigned int baseAddress) { 
+		WowObject(int baseAddress) { 
 			this->baseAddress = baseAddress; 
 			this->descriptorAddress = getDescriptorAddress();
 		}
@@ -30,7 +30,7 @@ class WowObject {
 
 	public:
 		int getBaseAddress() { return  this->baseAddress;  }
-		int getGuid() { return getMemoryReader()->readInt(this->baseAddress + GUID_OFFSET); }
+		unsigned int getGuid() { return getMemoryReader()->readUnsignedInt(this->baseAddress + GUID_OFFSET); }
 		int getDescriptorAddress() { return getMemoryReader()->readInt(this->baseAddress + DESCRIPTOR_OFFSET); }
 		int getType() { return getMemoryReader()->readInt(this->baseAddress + TYPE_OFFSET); }
 

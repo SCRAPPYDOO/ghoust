@@ -4,11 +4,16 @@
 
 using namespace std;
 
+enum BotType {
+	FOLLOWER,
+	BOT
+};
+
 class Properties {
 	public:
-		static ClassType playerClassType;
-		static string getClassTypeName(ClassType classType);
-		static string getPlayerClassTypeName();
+		static BotType botType;
+
+		static string getClassTypeName(int classType);
 
 		static const int SPELL_CAST_TIME = 500;
 };

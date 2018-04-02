@@ -184,6 +184,7 @@
     <ClCompile Include="MovementHelper.cpp" />
     <ClCompile Include="NpcObject.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="SpellManager.cpp" />
     <ClCompile Include="stdafx.cpp">
