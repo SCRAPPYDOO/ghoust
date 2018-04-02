@@ -47,8 +47,6 @@ void LogicManager::run()
 
 			GetSystemTimeAsFileTime(&filetime);
 
-			//cout << "LogicManager: filetime->dwHighDateTime " << filetime.dwHighDateTime << endl;
-			//cout << "LogicManager: filetime->dwLowDateTime; " << filetime.dwLowDateTime << endl;
 			long currentTimeSecond = filetime.dwLowDateTime;
 			long timeDiff = currentTimeSecond - lastTimeSecond;
 			lastTimeSecond = currentTimeSecond;

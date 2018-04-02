@@ -38,15 +38,23 @@ void Logic::onLoop(long timeDiff) {
 	};
 	
 	if (leader == NULL) {
-		if (player->getGuid() == ABIGAIL_GUID) {
-			leader = ObjectManager::getInstance()->getPlayer(SHINAIRI_GUID);
+		switch (player->getGuid()) {
+			case CHARACTERS_GUID::KRONOS_III_GULLDAN_GUID:
+				leader = ObjectManager::getInstance()->getPlayer(CHARACTERS_GUID::KRONOS_III_GHOUSTHUNTER_GUID);
+				break;
+			case CHARACTERS_GUID::ABIGAIL_GUID:
+				leader = ObjectManager::getInstance()->getPlayer(CHARACTERS_GUID::SHINAIRI_GUID);
+				break;
+			case CHARACTERS_GUID::SHINAIRI_GUID:
+				leader = ObjectManager::getInstance()->getPlayer(CHARACTERS_GUID::ABIGAIL_GUID);
+				break;
+			default:
+				cout << "Logic: Invalid player guid" << endl;
+				break;
 		}
-		else {
-			leader = ObjectManager::getInstance()->getPlayer(ABIGAIL_GUID);
-		}
-		
+	
 		if (leader == NULL) {
-			cout << "LogicManager: cant find leader named Shinairi" << endl;
+			cout << "Logic: cant find leader" << endl;
 			return;
 		}
 	}
