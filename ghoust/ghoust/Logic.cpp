@@ -116,6 +116,9 @@ void Logic::onLoop(long timeDiff) {
 		Every Time
 	*/
 	buffPlayer();
+    
+    cout << "Thread sleeping" << endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 }
 
 void Logic::doAction(int actionType) {
