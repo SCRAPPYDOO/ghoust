@@ -23,6 +23,18 @@ list<SpellId> WarlockLogic::getBuffList() {
 	return list;
 }
 
-SpellId WarlockLogic::selectSpell(NpcObject* target) {
+SpellId WarlockLogic::selectSpell(CreatureObject* target) {
+    /*
+        Check for immolate
+     */
+    if(!target->hasBuff()) {
+        
+    }
+    /*
+        Check for corruption
+     */
+    if(!target->hasBuff()) {
+        
+    }
 	return SpellId::WARLOCK_SHADOW_BOLT;
 }

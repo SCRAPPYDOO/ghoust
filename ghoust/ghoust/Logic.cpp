@@ -25,7 +25,6 @@ Logic::~Logic()
 }
 
 void Logic::onLoop() {
-	milliseconds ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
 	unsigned long framePerSecond = 33;
 	unsigned long lastTimeSecond = ms.count();
 	unsigned long frameTimer = framePerSecond;
@@ -321,4 +320,16 @@ bool Logic::target(NpcObject* target) {
 	}
 
 	return foundTarget;
+}
+
+void Logic::addFlag(LogicFlag logicFlag) {
+    this->logicFlag |= logicFlag;
+}
+
+void Logic::removeFlag(LogicFlag logicFlag) {
+    this->logicFlag &= ~logicFlag;
+}
+
+void Logic::hasFlag(LogicFlag logicFlag) {
+    return (this->logicFlag & logicFlag) == logicFlag;
 }

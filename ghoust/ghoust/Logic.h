@@ -17,11 +17,11 @@ using namespace std;
 using namespace std;
 
 enum LogicState {
-	STATE_NOTHING,
-	STATE_IN_COMBAT,
-	STATE_MOVING,
-	STATE_ROTATING,
-	STATE_EAT_DRINK,
+	STATE_NOTHING = 0x1,
+	STATE_IN_COMBAT = 0x2,
+	STATE_MOVING = 0x4,
+	STATE_ROTATING = 0x8,
+	STATE_EAT_DRINK = 0x16,
 };
 
 enum TimerType {
@@ -54,6 +54,7 @@ class Logic
 		map<TimerType, unsigned long> timers;
 
 		LogicState logicState = STATE_NOTHING;
+        int logicFlag = LogicState::STATE_NOTHING;
 
 		void followLeader();
 
@@ -70,6 +71,9 @@ class Logic
 			CHANGE LOGIC STATE
 		*/
 		void changeLogicState(LogicState newLogicState);
+        void addFlag(LogicState logicFlag);
+        void removeFlag(LogicState logicFlag);
+        void hasFlag(LogicState logicFlag);
 		
 		/*
 			MOVEMENT
@@ -94,6 +98,6 @@ class Logic
 	protected:
 		virtual bool checkIfCanCastSpell(Spell* spell) = 0; // Any Logic for player to check if  he can cast selected spell
 		virtual list<SpellId> getBuffList() = 0;			// List of buffs available for player
-		virtual SpellId selectSpell(NpcObject* target) = 0; // logic to select spell to cast on enemy
+		virtual SpellId selectSpell(CreatureObject* target) = 0; // logic to select spell to cast on enemy
 };
 
