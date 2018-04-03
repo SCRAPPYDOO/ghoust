@@ -16,16 +16,23 @@ using namespace std;
 
 using namespace std;
 
-enum LogicAction {
-	NOTHING,
-	EAT_DRINK_ACTION,
+enum LogicState {
+	STATE_NOTHING,
+	STATE_IN_COMBAT,
+	STATE_MOVING,
+	STATE_ROTATING,
+	STATE_EAT_DRINK,
+};
+
+enum TimerType {
+	EAT_DRINK,
 	SCAN_WOW_OBJECTS,
 };
 
 class Logic
 {
 	public:
-		void onLoop(long timeDiff);
+		void onLoop();
 
 		~Logic();
 
@@ -41,13 +48,12 @@ class Logic
 		PlayerObject * player = NULL;
 
 		bool isMoving = false;
-		bool isEating = false;
 
 		long actionTimer = 0;
 
-		map<LogicAction, long> timers;
+		map<TimerType, unsigned long> timers;
 
-		LogicAction logicAction = NOTHING;
+		LogicState logicState = STATE_NOTHING;
 
 		void followLeader();
 
@@ -60,6 +66,11 @@ class Logic
 
 		bool target(NpcObject* target);
 
+		/*
+			CHANGE LOGIC STATE
+		*/
+		void changeLogicState(LogicState newLogicState);
+		
 		/*
 			MOVEMENT
 		*/

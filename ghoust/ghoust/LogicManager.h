@@ -13,8 +13,6 @@ class LogicManager
 		LogicManager();
 		static LogicManager* logicManager;
 
-		static const int logicFrameRate = 17;
-
 		Logic* characterLogic;
 
 	public:
