@@ -1,6 +1,7 @@
 #pragma once
 
 enum KeyBinding {
+	ZERO = 0x30,
 	ONE = 0x31,
 	TWO = 0x32,
 	THREE = 0x33,
@@ -10,7 +11,6 @@ enum KeyBinding {
 	SEVEN = 0x37,
 	EIGHT = 0x38,
 	NINE = 0x39,
-	ZERO = 0x30,
 	MINUS = 0xBD,
 	PLUS = 0xBB,
 
@@ -57,4 +57,5 @@ class WarlockActionType : public ActionType {
 	public: 
 		static const int CAST_DEMON_SKIN = KeyBinding::NINE;
 		static const int CAST_SHADOW_BOLT = KeyBinding::TWO;
+		static const int CAST_IMMOLATE = KeyBinding::ONE;
 };

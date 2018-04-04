@@ -2,6 +2,7 @@
 
 #include "LogicManager.h"
 #include "LogicFactory.h"
+#include "Logger.h"
 
 #include <thread>
 #include <chrono>
@@ -20,7 +21,7 @@ LogicManager* LogicManager::getInstance() {
 }
 
 LogicManager::LogicManager() {
-  cout << "LogicManager: Initializing" << endl;
+	Logger::log("LogicManager: Initializing");
 
 }
 

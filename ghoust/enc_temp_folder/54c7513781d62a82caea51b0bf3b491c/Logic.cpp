@@ -305,7 +305,7 @@ void Logic::cancelRotate() {
 void Logic::cancelEat() {
 	doAction(ActionType::JUMP);
 	removeFlag(LogicFlag::FLAG_EAT_DRINK);
-	cout << "Logic: Stoping eat !" << endl;
+	cout << "Logic: Stoping eat !";
 }
 
 bool Logic::target(NpcObject* target) {

@@ -41,6 +41,10 @@ class CreatureObject : public WowObject {
 		bool isInCombat() { return hasFlag(Flag::FLAG_IS_IN_COMBAT); }
     
 		bool hasBuff(int spellId) {
+			return hasBuff(spellId, false);
+		}
+
+		bool hasBuff(int spellId, bool logs) {
 			int lastAddress;
 			for (int i = 0; i<MAX_BUFF_SIZE; i++) {
 				if (i == 0) {
@@ -49,7 +53,32 @@ class CreatureObject : public WowObject {
 				else {
 					lastAddress = getMemoryReader()->readInt(lastAddress + NEXT_BUFF_OFFSET);
 				}
+				if (logs == true) {
+					cout << "Buff id: " << lastAddress << endl;
+				}
+				if (lastAddress == spellId) {
+					return true;
+				}
+			}
+			return false;
+		}
 
+		bool hasDebuff(int spellId) {
+			return hasDebuff(spellId, false);
+		}
+
+		bool hasDebuff(int spellId, bool logs) {
+			int lastAddress;
+			for (int i = 0; i < MAX_BUFF_SIZE; i++) {
+				if (i == 0) {
+					lastAddress = getMemoryReader()->readInt(descriptorAddress + FIRST_DEBUFF_OFFSET);
+				}
+				else {
+					lastAddress = getMemoryReader()->readInt(lastAddress + NEXT_BUFF_OFFSET);
+				}
+				if (logs == true) {
+					cout << "Debuff id: " << lastAddress << endl;
+				}
 				if (lastAddress == spellId) {
 					return true;
 				}

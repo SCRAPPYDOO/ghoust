@@ -14,14 +14,18 @@
 
 using namespace std;
 
-using namespace std;
+enum LogicType {
+	LOGIC_BOT,
+	LOGIC_FOLLOWER,
+};
 
-enum LogicState {
-	STATE_NOTHING = 0x1,
-	STATE_IN_COMBAT = 0x2,
-	STATE_MOVING = 0x4,
-	STATE_ROTATING = 0x8,
-	STATE_EAT_DRINK = 0x16,
+enum LogicFlag {
+	FLAG_NOTHING = 0x1,
+	FLAG_IN_COMBAT = 0x2,
+	FLAG_MOVING = 0x4,
+	FLAG_ROTATING = 0x8,
+	FLAG_EAT_DRINK = 0x10,
+	FLAG_TARGETING = 0x20,
 };
 
 enum TimerType {
@@ -47,16 +51,13 @@ class Logic
 		PlayerObject * leader = NULL;
 		PlayerObject * player = NULL;
 
-		bool isMoving = false;
-
 		long actionTimer = 0;
 
 		map<TimerType, unsigned long> timers;
 
-		LogicState logicState = STATE_NOTHING;
-        int logicFlag = LogicState::STATE_NOTHING;
+        int logicFlag = LogicFlag::FLAG_NOTHING;
 
-		void followLeader();
+		
 
 		void startAction(int actionType) { ActionManager::getInstance()->startAction(actionType); }
 		void stopAction(int actionType) { ActionManager::getInstance()->stopAction(actionType); }
@@ -70,17 +71,19 @@ class Logic
 		/*
 			CHANGE LOGIC STATE
 		*/
-		void changeLogicState(LogicState newLogicState);
-        void addFlag(LogicState logicFlag);
-        void removeFlag(LogicState logicFlag);
-        void hasFlag(LogicState logicFlag);
+        void addFlag(LogicFlag logicFlag);
+        void removeFlag(LogicFlag logicFlag);
+        bool hasFlag(LogicFlag logicFlag);
 		
 		/*
 			MOVEMENT
 		*/
+		void followLeader();
+		bool faceTarget(CreatureObject* target);
 		void startFollow();
 		void stopFollow();
-		void cancelFollow();
+		void cancelMove();
+		void cancelRotate();
 
 		/*
 			BUFFS
@@ -92,7 +95,7 @@ class Logic
 		/*
 			EAT DRINK
 		*/
-		void eat();
+		bool eat();
 		void cancelEat();
 
 	protected:

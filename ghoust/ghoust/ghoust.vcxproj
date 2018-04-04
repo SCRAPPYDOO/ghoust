@@ -153,6 +153,7 @@
     <ClInclude Include="CreatureObject.h" />
     <ClInclude Include="Flag.h" />
     <ClInclude Include="Guid.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="Logic.h" />
     <ClInclude Include="LogicFactory.h" />
     <ClInclude Include="LogicManager.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="SpellManager.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="WarlockLogic.h" />
+    <ClInclude Include="WarlockSpellDefinition.h" />
     <ClInclude Include="WowObject.h" />
     <ClInclude Include="MemoryReader.h" />
     <ClInclude Include="ObjectManager.h" />
@@ -178,6 +180,7 @@
   <ItemGroup>
     <ClCompile Include="ActionManager.cpp" />
     <ClCompile Include="Ghoust.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Logic.cpp" />
     <ClCompile Include="LogicManager.cpp" />
     <ClCompile Include="MemoryReader.cpp" />
@@ -194,6 +197,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="WarlockLogic.cpp" />
+    <ClCompile Include="WarlockSpellDefinition.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -27,14 +27,23 @@ SpellId WarlockLogic::selectSpell(CreatureObject* target) {
     /*
         Check for immolate
      */
-    if(!target->hasBuff()) {
-        
-    }
+
+	SpellId spell = getSpellWithRank(WarlockSpellType::WARLOCK_IMMOLATE);
+	if (spell != NULL && !target->hasDebuff(spell)) {
+		return spell;
+	}
+
     /*
         Check for corruption
      */
-    if(!target->hasBuff()) {
+    //if(!target->hasBuff()) {
         
-    }
-	return SpellId::WARLOCK_SHADOW_BOLT;
+    //}
+
+	spell = getSpellWithRank(WarlockSpellType::WARLOCK_SHADOW_BOLT);
+	return spell;
+}
+
+SpellId WarlockLogic::getSpellWithRank(WarlockSpellType spellType) {
+	return WarlockSpellDefinition::getWarlockSpellIdByLevelAndSpellType(player->getCurrentLevel(), spellType);
 }
