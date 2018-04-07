@@ -51,10 +51,10 @@ class CreatureObject : public WowObject {
 					lastAddress = getMemoryReader()->readInt(descriptorAddress + FIRST_BUFF_OFFSET);
 				}
 				else {
-					lastAddress = getMemoryReader()->readInt(lastAddress + NEXT_BUFF_OFFSET);
+					lastAddress = getMemoryReader()->readInt(descriptorAddress + FIRST_BUFF_OFFSET + (NEXT_BUFF_OFFSET * i));
 				}
 				if (logs == true) {
-					cout << "Buff id: " << lastAddress << endl;
+					cout << "Number: " << i << " Buff id: " << lastAddress <<  endl;
 				}
 				if (lastAddress == spellId) {
 					return true;
@@ -74,7 +74,7 @@ class CreatureObject : public WowObject {
 					lastAddress = getMemoryReader()->readInt(descriptorAddress + FIRST_DEBUFF_OFFSET);
 				}
 				else {
-					lastAddress = getMemoryReader()->readInt(lastAddress + NEXT_BUFF_OFFSET);
+					lastAddress = getMemoryReader()->readInt(descriptorAddress + FIRST_DEBUFF_OFFSET + (NEXT_BUFF_OFFSET * i));
 				}
 				if (logs == true) {
 					cout << "Debuff id: " << lastAddress << endl;

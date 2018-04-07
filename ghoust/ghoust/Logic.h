@@ -31,6 +31,7 @@ enum LogicFlag {
 enum TimerType {
 	EAT_DRINK,
 	SCAN_WOW_OBJECTS,
+	JUMP,
 };
 
 class Logic
@@ -41,6 +42,8 @@ class Logic
 		~Logic();
 
 	protected:
+		static const int SPELL_RANGE = 30;
+		static const int  WAYPOINT_RANGE = 5;
 		static const int startFollowRange = 8;
 		static const int stopFollowRange = 5;
 		static const float rotationDifferenceCheck;
@@ -50,14 +53,27 @@ class Logic
 
 		PlayerObject * leader = NULL;
 		PlayerObject * player = NULL;
+		NpcObject* playerTarget = NULL;
 
-		long actionTimer = 0;
+		/*
+			WAYPOINTS
+		*/
+		static map<int, Position*> waypoints;
+		Position* nextWaypoint = NULL;
+		int waypointNumber = 1;
+		int direction = 0;
+
+		LogicType logicType = LogicType::LOGIC_BOT;
+		bool isBot() {
+			return logicType == LogicType::LOGIC_BOT;
+		}
+		bool isFollower() {
+			return logicType == LogicType::LOGIC_FOLLOWER;
+		}
 
 		map<TimerType, unsigned long> timers;
 
         int logicFlag = LogicFlag::FLAG_NOTHING;
-
-		
 
 		void startAction(int actionType) { ActionManager::getInstance()->startAction(actionType); }
 		void stopAction(int actionType) { ActionManager::getInstance()->stopAction(actionType); }
@@ -66,8 +82,13 @@ class Logic
 		void doActionNoSleep(int actionType);
 		void castSpell(SpellId spellId);
 
+		/*
+			COMBAT
+		*/
 		bool target(NpcObject* target);
-
+		bool targetAttacker();
+		bool targetRandomTarget();
+		
 		/*
 			CHANGE LOGIC STATE
 		*/
@@ -78,10 +99,13 @@ class Logic
 		/*
 			MOVEMENT
 		*/
+		bool isInRange(Position* position);
+		bool isInRange(CreatureObject* target);
 		void followLeader();
 		bool faceTarget(CreatureObject* target);
-		void startFollow();
-		void stopFollow();
+		bool facePosition(Position* position);
+		void startMove();
+		void stopMove();
 		void cancelMove();
 		void cancelRotate();
 

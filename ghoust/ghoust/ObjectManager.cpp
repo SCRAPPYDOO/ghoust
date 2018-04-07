@@ -39,6 +39,7 @@ void ObjectManager::scanForPlayer() {
 	{
 		if (playerGuid == this->memoryReader->readUnsignedInt(firstObject + Address::OBJECT_GUID)) {
 			this->player = new PlayerObject(firstObject);
+			cout << "Player base address: " << firstObject << " pointer " << &firstObject << endl;
 			return;
 		}
 

@@ -82,6 +82,9 @@
     <Filter Include="Header Files\Object\SpellDefinition\Warlock">
       <UniqueIdentifier>{82229966-1a85-4009-89a8-c19d6b0f8431}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Waypoints">
+      <UniqueIdentifier>{97bd8fb9-0a6e-4b63-8264-485b5b62172e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ObjectType.h">
@@ -171,6 +174,12 @@
     <ClInclude Include="WarlockSpellDefinition.h">
       <Filter>Header Files\Object\SpellDefinition\Warlock</Filter>
     </ClInclude>
+    <ClInclude Include="DunMorogh.h">
+      <Filter>Header Files\Waypoints</Filter>
+    </ClInclude>
+    <ClInclude Include="WaypointManager.h">
+      <Filter>Header Files\Waypoints</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -220,6 +229,9 @@
     </ClCompile>
     <ClCompile Include="WarlockSpellDefinition.cpp">
       <Filter>Header Files\Object\SpellDefinition\Warlock</Filter>
+    </ClCompile>
+    <ClCompile Include="WaypointManager.cpp">
+      <Filter>Header Files\Waypoints</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

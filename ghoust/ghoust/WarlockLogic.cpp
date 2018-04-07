@@ -15,30 +15,42 @@ bool WarlockLogic::checkIfCanCastSpell(Spell* spell) {
 
 list<SpellId> WarlockLogic::getBuffList() {
 	list<SpellId> list;
-	if (player->getCurrentLevel() > 9) {
-		list = { SpellId::WARLOCK_DEMON_SKIN_RANK_2  };
-	} else {
-		list = { SpellId::WARLOCK_DEMON_SKIN_RANK_1  };
+
+	/*
+		DEMON SKIN
+	*/
+	SpellId buff = getSpellWithRank(WarlockSpellType::WARLOCK_DEMON_SKIN);
+	if (buff != NULL) {
+		list.push_back(buff);
 	}
+
+	//ToDO add all demon armors  to 1 buff typew
+	
 	return list;
 }
 
 SpellId WarlockLogic::selectSpell(CreatureObject* target) {
-    /*
-        Check for immolate
-     */
-
-	SpellId spell = getSpellWithRank(WarlockSpellType::WARLOCK_IMMOLATE);
+	/*
+	Check for corruption
+	*/
+	SpellId spell = getSpellWithRank(WarlockSpellType::WARLOCK_CORRUPTION);
 	if (spell != NULL && !target->hasDebuff(spell)) {
 		return spell;
 	}
-
-    /*
-        Check for corruption
-     */
-    //if(!target->hasBuff()) {
-        
-    //}
+	/*
+	Check for curse of agony
+	*/
+	spell = getSpellWithRank(WarlockSpellType::WARLOCK_CURSE_OF_AGONY);
+	if (spell != NULL && !target->hasDebuff(spell)) {
+		return spell;
+	}
+	/*
+	Check for immolate
+	*/
+	//spell = NULL; // getSpellWithRank(WarlockSpellType::WARLOCK_IMMOLATE);
+	//if (spell != NULL && !target->hasDebuff(spell)) {
+	//	return spell;
+	//}
 
 	spell = getSpellWithRank(WarlockSpellType::WARLOCK_SHADOW_BOLT);
 	return spell;

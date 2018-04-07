@@ -58,4 +58,7 @@ class WarlockActionType : public ActionType {
 		static const int CAST_DEMON_SKIN = KeyBinding::NINE;
 		static const int CAST_SHADOW_BOLT = KeyBinding::TWO;
 		static const int CAST_IMMOLATE = KeyBinding::ONE;
+		static const int CAST_CORRUPTION = KeyBinding::THREE;
+		static const int CAST_SUMMON_DEMON = KeyBinding::ZERO;
+		static const int CAST_CURSE_OF_AGONY = KeyBinding::FOUR;
 };
