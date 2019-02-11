@@ -82,7 +82,6 @@ static map<SpellId, Spell*> spellList = {
 	{ WARLOCK_CURSE_OF_AGONY_1 , new Spell(WARLOCK_CURSE_OF_AGONY_1, SECOND * 2, 0, 25, WarlockActionType::CAST_CURSE_OF_AGONY, 30)},
 };
 
-
 static int getSpellManaCost(SpellId spellId) {
 	return spellList[spellId]->manaCost;
 }
