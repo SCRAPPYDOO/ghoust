@@ -2,7 +2,7 @@
 
 #include "Logic.h"
 #include "ClassType.h"
-#include "WarlockLogic.h"
+#include "class/warlock/WarlockLogic.h"
 #include "Properties.h"
 #include <string>
 
