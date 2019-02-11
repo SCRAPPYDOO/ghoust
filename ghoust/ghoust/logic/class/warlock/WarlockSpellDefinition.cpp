@@ -70,12 +70,12 @@ map<int, map<WarlockSpellType, SpellId>> WarlockSpellDefinition::warlockSpellByL
 	},
 	{
 		8,
-{
-	{ WARLOCK_IMMOLATE, WARLOCK_IMMOLATE_1 },
-{ WARLOCK_SHADOW_BOLT, WARLOCK_SHADOW_BOLT_2 },
-{ WARLOCK_DEMON_SKIN, WARLOCK_DEMON_SKIN_RANK_1 },
-{ WARLOCK_CORRUPTION, WARLOCK_CORRUPTION_1 },
-}
+            {
+                { WARLOCK_IMMOLATE, WARLOCK_IMMOLATE_1 },
+                { WARLOCK_SHADOW_BOLT, WARLOCK_SHADOW_BOLT_2 },
+                { WARLOCK_DEMON_SKIN, WARLOCK_DEMON_SKIN_RANK_1 },
+                { WARLOCK_CORRUPTION, WARLOCK_CORRUPTION_1 },
+            }
 
 	},
 	{
