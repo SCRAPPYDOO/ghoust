@@ -6,7 +6,8 @@ using namespace std;
 
 enum BotType {
 	FOLLOWER,
-	BOT
+	BOT,
+	SLAVE
 };
 
 class Properties {
