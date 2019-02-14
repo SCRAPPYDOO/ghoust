@@ -6,3 +6,5 @@
 *.lastbuildstate
 *.res
 .idea/
+.vs/
+shadow/x64/Debug/

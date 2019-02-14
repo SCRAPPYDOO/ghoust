@@ -1,7 +1,5 @@
 #pragma once
 
-#include "ClassType.h"
-
 using namespace std;
 
 enum BotType {
